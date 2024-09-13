@@ -1,0 +1,129 @@
+{% extends 'base/base_main.html' %}
+{% load static %}
+    {% block body %}
+        {% comment %} Carrousel {% endcomment %}
+        <div class="gallery js-flickity mt-1" data-flickity-options='{ "wrapAround": true, "autoPlay": true }'>
+
+            <div class="gallery-cell">
+                <a href="#">
+                    <img src="{% static "img.jpg" %}" alt="Image 1">
+                    <div class="overlay">
+                        <div class="overlay-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos ullam debitis fuga, velit soluta vero aut molestiae? Doloribus atque exercitationem quasi mollitia libero, blanditiis veritatis consequatur labore nihil id error.</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery-cell">
+                <a href="#">
+                    <img src="{% static "img2.jpg" %}" alt="Image 1">
+                    <div class="overlay">
+                        <div class="overlay-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos ullam debitis fuga, velit soluta vero aut molestiae? Doloribus atque exercitationem quasi mollitia libero, blanditiis veritatis consequatur labore nihil id error.</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery-cell">
+                <a href="">
+                    <img src="{% static "img3.jpg" %}" alt="Image 1">
+                    <div class="overlay">
+                        <div class="overlay-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos ullam debitis fuga, velit soluta vero aut molestiae? Doloribus atque exercitationem quasi mollitia libero, blanditiis veritatis consequatur labore nihil id error.</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery-cell">
+                <a href="">
+                    <img src="{% static "img.jpg" %}" alt="Image 1">
+                    <div class="overlay">
+                        <div class="overlay-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos ullam debitis fuga, velit soluta vero aut molestiae? Doloribus atque exercitationem quasi mollitia libero, blanditiis veritatis consequatur labore nihil id error.</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        {% comment %} Cajones {% endcomment %}
+        <div class="contenedor-cajones mt-3">
+            <div class="contenedor-cajon-izquierda">
+                <div class="titulo-cajon">
+                    <h1>titulo</h1>
+                </div>
+                <div class="cajon-izquierda">       
+                    <div class="articulos arti-estilo not-cart mini-art">
+                        <h3>
+                            <time>18 de junio de 2024 a las 09:37</time>
+                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
+                        </h3>
+                        <div>
+                            
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
+                        
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
+                            
+                        </div>
+                        <h4>
+                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
+                        </h4>
+                    </div>
+
+                    <div class="articulos arti-estilo not-cart mini-art">
+                        <h3>
+                            <time>18 de junio de 2024 a las 09:37</time>
+                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
+                        </h3>
+                        <div>
+                            
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
+                        
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
+                            
+                        </div>
+                        <h4>
+                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
+                        </h4>
+                    </div>
+
+                    <div class="articulos arti-estilo not-cart mini-art">
+                        <h3>
+                            <time>18 de junio de 2024 a las 09:37</time>
+                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
+                        </h3>
+                        <div>
+                            
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
+                        
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
+                            
+                        </div>
+                        <h4>
+                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="contenedor-cajon-derecha">
+                <div class="titulo-cajon">
+                    <h1>titulo</h1>
+                </div>
+                <div class="cajon-derecha">
+                    <div class="articulos arti-estilo not-cart mini-art">
+                        <h3>
+                            <time>18 de junio de 2024 a las 09:37</time>
+                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
+                        </h3>
+                        <div>
+                            
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
+                        
+                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
+                            
+                        </div>
+                        <h4>
+                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock body %}

@@ -11,6 +11,9 @@
 				{% endblock headextra %}
 			</div>
 			<div class="card-body">
+				{% if form %}
+					{% include "base/base_searchform.html" %}
+				{% endif %}
 				<div class="table-responsive-md">
 					{% block bodylist %}
 						

@@ -1,0 +1,5 @@
+{% load crispy_forms_tags %}
+<form method="GET" action="{{ request.path }}" class="pb-3" id="formlist">
+	{% crispy form %}
+	<button type="submit" class="no-show">Enviar</button>
+</form>

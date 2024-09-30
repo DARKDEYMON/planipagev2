@@ -377,3 +377,26 @@ body {
     -moz-box-shadow: -28px 26px 20px -5px rgba (0,48,73,0.55);
     box-shadow: -28px 26px 20px -5px rgba(2, 29, 44, 0.332);
 }
+/* ocultar */
+.no-show{
+    display: None;
+}
+/* brillo */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.target-blink:target{
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-direction: reverse;
+    animation-iteration-count: 3;
+    scroll-margin-top: 50vh;
+}

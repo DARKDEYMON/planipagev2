@@ -1,9 +1,10 @@
 {% extends "base/center_body.html" %}
+{% load gloval_tags %}
 	{% block contend %}
 		<div class="card">
 			<div class="card-header">
 				{% block name %}
-					
+					<h2 class="text-center">Lista de {{ view|verbose_name_plural }}</h2>
 				{% endblock name %}
 				{% block headextra %}
 					

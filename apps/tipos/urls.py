@@ -19,12 +19,13 @@ from django.contrib.auth.decorators import login_required, permission_required
 from .views import *
 
 urlpatterns = [ 
-    path('listmaestro/', permission_required('users.tipos')(login_required(MaestroListView.as_view())), name='maestro_list'),
-    path('createmaestro/', permission_required('users.tipos')(login_required(MaestroCreateView.as_view())), name='maestro_create'),
-    path('updatemaestro/<int:pk>/', permission_required('users.tipos')(login_required(MaestroUpdateView.as_view())), name='maestro_update'),
-    path('deletemaestro/<int:pk>/', permission_required('users.tipos')(login_required(MaestroDeleteView.as_view())), name='maestro_delete'),
-    path('<int:pk>/tipolist/', permission_required('users.tipos')(login_required(TipoListView.as_view())), name='tipo_list'),
-    path('<int:maestro_pk>/createtipo/', permission_required('users.tipos')(login_required(TipoCreateView.as_view())), name='tipo_create'),
+    path('listmaestro/', permission_required('users.tipos')(login_required(ListTipoMaestroView.as_view())), name='maestro_list'),
+    path('createmaestro/', permission_required('users.tipos')(login_required(CreateTipoMaestroView.as_view())), name='maestro_create'),
+    path('updatemaestro/<int:pk>/', permission_required('users.tipos')(login_required(UpdateTipoMaestroView.as_view())), name='maestro_update'),
+    path('deletemaestro/<int:pk>/', permission_required('users.tipos')(login_required(DeleteTipoMaestroView.as_view())), name='maestro_delete'),
+    
+    path('tipolist/<int:pk>/', permission_required('users.tipos')(login_required(ListTipoView.as_view())), name='tipo_list'),
+    path('createtipo/<int:pk>', permission_required('users.tipos')(login_required(TipoCreateView.as_view())), name='tipo_create'),
     path('updatetipo/<int:pk>/', permission_required('users.tipos')(login_required(TipoUpdateView.as_view())), name='tipo_update'),
     path('deletetipo/<int:pk>/', permission_required('users.tipos')(login_required(TipoDeleteView.as_view())), name='tipo_delete'),
 ]

@@ -1,7 +1,10 @@
-{% extends "pagina/pagina_create.html" %}
+{% extends "tipo/tipo_create.html" %}
 {% load gloval_tags %}
 	{% block name %}
 		<h2 class="text-center"> Eliminar {% get_model_verbose_name 'tipos' 'Tipo' %}</h2>
+		<div class="alert alert-info mt-2" role="alert">
+            <span class="badge text-bg-info"><strong>{% get_model_verbose_name 'tipos' 'TipoMaestro' %}:</strong> {{ object.tipomaestro }}</span>
+        </div>
 	{% endblock name %}
 
 	{% block bodydelete %}

@@ -3,11 +3,3 @@
 {% block name %}
     <h2 class="text-center"> Crear {% get_model_verbose_name 'extras' 'miembro' %}</h2>
 {% endblock name %}
-{% block bodyform %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Crear</button>
-        <a href="{% url 'extras:miembro_list' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
-{% endblock bodyform %}

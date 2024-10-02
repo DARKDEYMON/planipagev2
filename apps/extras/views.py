@@ -30,19 +30,19 @@ class DeletePaginaView(DeleteView):
 	success_url = reverse_lazy('extras:list_paginas')
 
 #miembros
-
-class ListMiembroView(ListView):
+class ListMiembroView(ListSearchView):
     model = Miembro
-    ordering = ['-id']
+    ordering = ['-prioridad', 'id']
     paginate_by = 4  
     template_name = 'miembro/miembro_list.html'
+    fields_search = ['id', 'nombre', 'apellidop', 'apellidom', 'cargo']
 
-class CreateMiembroView(CreateView):
+class CreateMiembroView(CreateView, FormPageRedirectView):
     form_class = MiembroForm
     template_name = 'miembro/miembro_create.html'
-    success_url = reverse_lazy('extras:miembro_list')  
+    success_url = reverse_lazy('extras:miembro_list')
 
-class UpdateMiembroView(UpdateView):
+class UpdateMiembroView(UpdateView, FormPageRedirectView):
     model = Miembro
     form_class = MiembroForm
     template_name = 'miembro/miembro_update.html'

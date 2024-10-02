@@ -1,0 +1,47 @@
+{% extends "base/base_list.html" %}
+{% load gloval_tags %}
+
+{% block headextra %}
+    <a type="button" class="btn btn-primary" href="{% url 'publicaciones:publicacion_create' %}">
+        <i class="fa-solid fa-plus"></i> Crear {% get_model_verbose_name 'publicaciones' 'publicacion' %}
+    </a>
+{% endblock headextra %}
+
+{% block bodylist %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Título</th>
+                <th scope="col">Resumen</th>
+                <th scope="col">Tipos</th>
+                <th scope="col">Publicado</th>
+                <th scope="col">Creado</th>
+                <th scope="col">Modificado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr id='{{ object.id }}' class="target-blink">
+                    <td>{{ object.id }}</td>
+                    <td>{{ object.titulo }}</td>
+                    <td>{{ object.resumen }}</td>
+                    <td>{% for tipo in object.tipo.all %}{{ tipo.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    <td>{% if object.publicado %}Sí{% else %}No{% endif %}</td>
+                    <td>{{ object.creado|date:"d M Y H:i" }}</td>
+                    <td>{{ object.modificado|date:"d M Y H:i" }}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="btn btn-primary" href="{% url 'publicaciones:publicacion_update' object.id %}">
+                                <i class="fa-solid fa-pen-to-square"></i> Actualizar
+                            </a>
+                            <a type="button" class="btn btn-danger" href="{% url 'publicaciones:publicacion_delete' object.id %}">
+                                <i class="fa-solid fa-trash"></i> Eliminar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock bodylist %}

@@ -1,0 +1,11 @@
+{% extends "Publicacion/Publicacion_create.html" %}
+{% load gloval_tags %}
+    {% block name %}
+        <h2 class="text-center"> Eliminar {% get_model_verbose_name 'publicaciones' 'publicacion' %}</h2>
+    {% endblock name %}
+
+    {% block bodydelete %}
+        <div class="alert alert-danger" role="alert">
+          Alerta se borrara el objeto {{object}}
+        </div>
+    {% endblock bodydelete %}

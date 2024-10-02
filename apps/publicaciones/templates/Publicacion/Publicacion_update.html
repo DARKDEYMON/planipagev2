@@ -1,0 +1,5 @@
+{% extends "Publicacion/Publicacion_create.html" %}
+{% load gloval_tags %}
+    {% block name %}
+        <h2 class="text-center"> Actualizar {% get_model_verbose_name 'publicaciones' 'publicacion' %}</h2>
+    {% endblock name %}

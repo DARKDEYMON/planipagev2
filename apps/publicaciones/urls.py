@@ -15,8 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.contrib.auth.decorators import login_required, permission_required
 from .views import *
-
 urlpatterns = [
-    path('', main, name='main')
+    path('', main, name='main'),
+    
+    path('listPublicacion/', permission_required('users.extras')(login_required(ListPublicacionViews.as_view())), name='publicacion_list'),
+    path('createPublicacion/', permission_required('users.extras')(login_required(CreatePublicacionView.as_view())), name='publicacion_create'),
+    path('updatePublicacion/<int:pk>/', permission_required('users.extras')(login_required(UpdatePublicacionView.as_view())), name='publicacion_update'),
+    path('deletePublicacion/<int:pk>/', permission_required('users.users')(login_required(DeletePublicacionView.as_view())), name='publicacion_delete'),
 ]

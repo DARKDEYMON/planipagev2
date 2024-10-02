@@ -1,0 +1,39 @@
+{% extends "base/base_list.html" %}
+{% load gloval_tags %}
+	{% block headextra %}
+    <a type="button" class="btn btn-primary" href="{% url 'tipos:tipo_create' maestro_pk=maestro_pk %}">
+        <i class="fa-solid fa-plus"></i> Crear {% get_model_verbose_name 'tipos' 'Tipo' %}</a>
+	{% endblock headextra %}
+	{% block bodylist %}
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Prioridad</th>
+                    <th scope="col">Maestro</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                    <tr id='{{ object.id}}' class="target-blink">
+                        <td>{{ object.id }}</td>
+                        <td>{{ object.nombre }}</td>
+                        <td>{{ object.prioridad }}</td>
+                        <td>{{ object.tipomaestro }}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a type="button" class="btn btn-primary" href="{% url 'tipos:tipo_update' object.id %}">
+                                    <i class="fa-solid fa-pen-to-square"></i> Actualizar
+                                </a>
+                                <a type="button" class="btn btn-danger" href="{% url 'tipos:tipo_delete' object.id %}">
+                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>    
+    {% endblock bodylist %}
+

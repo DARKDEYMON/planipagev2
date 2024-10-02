@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('apps.publicaciones.urls','publicaciones'), namespace='publicaciones')),
     path('users/', include(('apps.users.urls', 'users'), namespace='users')),
-    path('extras/', include(('apps.extras.urls', 'extras'), namespace='extras'))
+    path('extras/', include(('apps.extras.urls', 'extras'), namespace='extras')),
+    path('tipos/', include(('apps.tipos.urls', 'tipos'), namespace='tipos')),
 ]

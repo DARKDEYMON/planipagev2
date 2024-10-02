@@ -8,7 +8,7 @@ from .forms import *
 class ListPaginaView(ListSearchView):
 	model = Pagina
 	ordering = ['-id']
-	paginate_by = 10
+	paginate_by = 4
 	template_name = 'pagina/pagina_list.html'
 	fields_search = ['id', 'nombre']
 
@@ -28,3 +28,27 @@ class DeletePaginaView(DeleteView):
 	model = Pagina
 	template_name = 'pagina/pagina_delete.html'
 	success_url = reverse_lazy('extras:list_paginas')
+
+#miembros
+
+class ListMiembroView(ListView):
+    model = Miembro
+    ordering = ['-id']
+    paginate_by = 4  
+    template_name = 'miembro/miembro_list.html'
+
+class CreateMiembroView(CreateView):
+    form_class = MiembroForm
+    template_name = 'miembro/miembro_create.html'
+    success_url = reverse_lazy('extras:miembro_list')  
+
+class UpdateMiembroView(UpdateView):
+    model = Miembro
+    form_class = MiembroForm
+    template_name = 'miembro/miembro_update.html'
+    success_url = reverse_lazy('extras:miembro_list') 
+
+class DeleteMiembroView(DeleteView):
+    model = Miembro
+    template_name = 'miembro/miembro_delete.html'
+    success_url = reverse_lazy('extras:miembro_list')  

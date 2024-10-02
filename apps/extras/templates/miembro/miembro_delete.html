@@ -1,0 +1,16 @@
+{% extends "miembro/miembro_create.html" %}
+{% load gloval_tags %}
+{% block name %}
+    <h2 class="text-center"> Eliminar {% get_model_verbose_name 'extras' 'miembro' %}</h2>
+{% endblock name %}
+
+{% block bodydelete %}
+    <div class="alert alert-danger" role="alert">
+        ¿Estás seguro de que deseas eliminar el objeto "{{ object }}"?
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'extras:list_miembro' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock bodydelete %}

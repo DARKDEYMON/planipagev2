@@ -39,3 +39,16 @@ class Publicacion(models.Model):
 	class Meta:
 		verbose_name = _('Publicacion')
 		verbose_name_plural = _('Publicaciones')
+
+class Archivo(models.Model):
+	publicacion = models.ForeignKey('publicaciones.Publicacion', on_delete=models.CASCADE)
+	archivo = models.FileField(upload_to='archivos/%Y-%m-%d-%H-%M-%S/')
+	prioridad = models.PositiveIntegerField(
+		null=False,
+		blank=False
+	)
+	class Meta:
+		verbose_name = _('Archivo')
+		verbose_name_plural = _('Archivos')
+	def __str__(self):
+		return str(self.publicacion)

@@ -36,6 +36,9 @@
 						    Opciones
 						</a>
 						<ul class="dropdown-menu">
+							{% if perms.users.users %}
+								<li><a class="dropdown-item" href="{% url 'users:list_user' %}"><i class="fa-solid fa-list"></i> Lista de  {% get_model_verbose_name_plural 'users' 'User' %}</a></li>
+							{% endif %}
 							{% if perms.users.extras %}
 								<li><a class="dropdown-item" href="{% url 'extras:list_paginas' %}"><i class="fa-solid fa-list"></i> Lista de  {% get_model_verbose_name_plural 'extras' 'Pagina' %}</a></li>
 								<li><a class="dropdown-item" href="{% url 'extras:miembro_list' %}"><i class="fa-solid fa-list"></i> Lista de {% get_model_verbose_name_plural 'extras' 'Miembro' %}</a></li>

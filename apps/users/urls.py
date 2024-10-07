@@ -29,4 +29,7 @@ urlpatterns = [
         logout_then_login,
         name='logout'
     ),
+    path('listuser/', permission_required('user.users')(login_required(ListUserView.as_view())), name='list_user'),
+    path('createuser/', permission_required('user.users')(login_required(CreateUserView.as_view())), name='create_user'),
+    path('permisos/<int:pk>/', permission_required('user.users')(login_required(PermisosView.as_view())), name='user_permisos')
 ]

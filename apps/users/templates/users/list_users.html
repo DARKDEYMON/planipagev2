@@ -1,0 +1,41 @@
+{% extends "base/base_list.html" %}
+{% load gloval_tags %}
+
+{% block headextra %}
+    <a type="button" class="btn btn-primary" href="{% url 'users:create_user' %}">
+        <i class="fa-solid fa-plus"></i> Crear {% get_model_verbose_name 'users' 'User' %}
+    </a>
+{% endblock headextra %}
+
+{% block bodylist %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Username</th>
+                <th scope="col">A Paterno</th>
+                <th scope="col">A Materno</th>
+                <th scope="col">Email</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr id='{{ object.id }}' class="target-blink">
+                    <td>{{ object.id }}</td>
+                    <td>{{ object.username }}</td>
+                    <td>{{ object.first_name }}</td>
+                    <td>{{ object.last_name }}</td>
+                    <td>{{ object.email }}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="btn btn-primary" href="{% url 'users:user_permisos' object.id %}">
+                                <i class="fa-solid fa-pen-to-square"></i> Permisos
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock bodylist %}

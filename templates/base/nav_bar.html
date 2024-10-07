@@ -1,3 +1,4 @@
+{% load gloval_tags %}
 <nav class="navbar navbar-expand-lg bg-personal" data-bs-theme="dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="/">Planificacion</a>
@@ -36,13 +37,15 @@
 						</a>
 						<ul class="dropdown-menu">
 							{% if perms.users.extras %}
-								<li><a class="dropdown-item" href="{% url 'extras:list_paginas' %}"><i class="fa-solid fa-list"></i> Lista de Paginas</a></li>
-								<li><a class="dropdown-item" href="{% url 'extras:miembro_list' %}"><i class="fa-solid fa-list"></i> Lista de Miembros</a></li>
-								<li><a class="dropdown-item" href="{% url 'tipos:maestro_list' %}"><i class="fa-solid fa-list"></i> Lista de Maestros</a></li>
-								<li><a class="dropdown-item" href="{% url 'publicaciones:publicacion_list' %}"><i class="fa-solid fa-list"></i> Lista de Publicaciones</a></li>
+								<li><a class="dropdown-item" href="{% url 'extras:list_paginas' %}"><i class="fa-solid fa-list"></i> Lista de  {% get_model_verbose_name_plural 'extras' 'Pagina' %}</a></li>
+								<li><a class="dropdown-item" href="{% url 'extras:miembro_list' %}"><i class="fa-solid fa-list"></i> Lista de {% get_model_verbose_name_plural 'extras' 'Miembro' %}</a></li>
 							{% endif %}
-						    
-						    <li><a class="dropdown-item" href="#">Another action</a></li>
+							{% if perms.users.tipos %}
+								<li><a class="dropdown-item" href="{% url 'tipos:maestro_list' %}"><i class="fa-solid fa-list"></i> Lista de {% get_model_verbose_name_plural 'tipos' 'TipoMaestro' %}</a></li>
+							{% endif %}
+							{% if perms.users.publicaciones %}
+								<li><a class="dropdown-item" href="{% url 'publicaciones:publicacion_list' %}"><i class="fa-solid fa-list"></i> Lista de {% get_model_verbose_name_plural 'publicaciones' 'Publicacion' %}</a></li>
+							{% endif %}
 						    <li>
 						      <hr class="dropdown-divider">
 						    </li>

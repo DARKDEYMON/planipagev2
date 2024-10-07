@@ -20,8 +20,10 @@ from .views import *
 urlpatterns = [
     path('', main, name='main'),
     
-    path('listPublicacion/', permission_required('users.extras')(login_required(ListPublicacionViews.as_view())), name='publicacion_list'),
-    path('createPublicacion/', permission_required('users.extras')(login_required(CreatePublicacionView.as_view())), name='publicacion_create'),
-    path('updatePublicacion/<int:pk>/', permission_required('users.extras')(login_required(UpdatePublicacionView.as_view())), name='publicacion_update'),
-    path('deletePublicacion/<int:pk>/', permission_required('users.users')(login_required(DeletePublicacionView.as_view())), name='publicacion_delete'),
+    path('listPublicacion/', permission_required('users.publicaciones')(login_required(ListPublicacionViews.as_view())), name='publicacion_list'),
+    path('createPublicacion/', permission_required('users.publicaciones')(login_required(CreatePublicacionView.as_view())), name='publicacion_create'),
+    path('updatePublicacion/<int:pk>/', permission_required('users.publicaciones')(login_required(UpdatePublicacionView.as_view())), name='publicacion_update'),
+    path('deletePublicacion/<int:pk>/', permission_required('users.publicaciones')(login_required(DeletePublicacionView.as_view())), name='publicacion_delete'),
+
+    path('archivoforminline/<int:pk>/', permission_required('users.publicaciones')(login_required(archivo_form_inline_view)), name='publicaciones_inline'),
 ]

@@ -45,7 +45,8 @@ class Archivo(models.Model):
 	archivo = models.FileField(upload_to='archivos/%Y-%m-%d-%H-%M-%S/')
 	prioridad = models.PositiveIntegerField(
 		null=False,
-		blank=False
+		blank=False,
+		default=1
 	)
 	class Meta:
 		verbose_name = _('Archivo')

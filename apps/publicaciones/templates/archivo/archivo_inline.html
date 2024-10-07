@@ -1,0 +1,31 @@
+{% extends "base/base_form.html" %}
+{% load crispy_forms_tags %}
+{% load gloval_tags %}
+{% block name %}
+    <h2 class="text-center"> Inline {% get_model_verbose_name 'publicaciones' 'Archivo' %}</h2>
+    <div class="alert alert-info mt-2" role="alert">
+        <span class="badge text-bg-info"><strong>{% get_model_verbose_name 'publicaciones' 'Publicacion' %}:</strong> {{ instance }}</span>
+    </div>
+{% endblock name %}
+
+{% block bodyform %}
+    <form  method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="formset-container">
+            {% crispy formset helper %}
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id='add-extra' type="submit" class="btn btn-secondary"><i class="fa-solid fa-plus"></i></button>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                <button name="guardar-volver" type="submit" class="btn btn-warning"><i class="fa-solid fa-floppy-disk"></i> Guardar y Volver</button>
+            </div>
+        </div>
+    </form>
+{% endblock bodyform %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        new AddFieldFormset('add-extra', 'formset-container', `{% crispy extra_field helper %}`);
+    </script>
+{% endblock scripts %}

@@ -5,6 +5,7 @@ from django.http import Http404
 from django.http import HttpResponseRedirect
 from apps.users.generic import *
 from django.urls import reverse_lazy
+from django.apps import apps
 from .forms import *
 
 # Create your views here.
@@ -55,4 +56,5 @@ def archivo_form_inline_view(request, pk):
     return render(request, 'archivo/archivo_inline.html', {'formset':formset, 'instance':instance, 'extra_field': extra_field, 'helper':helper})
 
 def main(request):
-    return render(request, 'main.html', {})
+    carousel = Publicacion.objects.filter().prefetch_related('archivos_set').order_by('-id')[:5]
+    return render(request, 'main.html', {'carousel':carousel})

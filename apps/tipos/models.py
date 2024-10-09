@@ -13,12 +13,6 @@ class TipoMaestro(models.Model):
 		null=False,
 		blank=False
 	)
-	in_main = models.BooleanField(
-		verbose_name='En Main',
-		null=False,
-		blank=False,
-		default=False
-	)
 	def __str__(self):
 		return self.nombre
 	class Meta:
@@ -35,6 +29,12 @@ class Tipo(models.Model):
 	prioridad = models.PositiveIntegerField(
 		null=False,
 		blank=False
+	)
+	in_main = models.BooleanField(
+		verbose_name='En Main',
+		null=False,
+		blank=False,
+		default=False
 	)
 	def __str__(self):
 		return self.nombre

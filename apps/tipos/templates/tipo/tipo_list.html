@@ -15,6 +15,8 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Prioridad</th>
                     <th scope="col">Maestro</th>
+                    <th scope="col">En Main</th>
+                    <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +26,13 @@
                         <td>{{ object.nombre }}</td>
                         <td>{{ object.prioridad }}</td>
                         <td>{{ object.tipomaestro }}</td>
+                        <td>
+                            {% if object.in_main %}
+                                <span class="badge rounded-pill text-bg-success">Si</span>
+                            {% else %}
+                                <span class="badge rounded-pill text-bg-warning">No</span>
+                            {% endif %}
+                        </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a type="button" class="btn btn-primary" href="{% url 'tipos:tipo_update' object.id %}">

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="{% static 'styles.css' %}">
 		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 		<script src="https://kit.fontawesome.com/9328387887.js" crossorigin="anonymous"></script>
+		<script src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}" referrerpolicy="origin"></script>
 	</head>
 	<body>
 		{% block wave %}
@@ -30,6 +31,26 @@
 		{% block scripts %}
 			
 		{% endblock scripts %}
-			
+		
+		<script>
+			tinymce.init({
+				selector: 'textarea',
+				//plugins: 'advlist link image lists',
+				language: 'es',
+				plugins: [
+					'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+					'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+					'insertdatetime', 'media', 'table', 'help', 'wordcount'
+				],
+				toolbar: 'undo redo | blocks | ' +
+				'bold italic backcolor | alignleft aligncenter ' +
+				'alignright alignjustify | bullist numlist outdent indent | ' +
+				'removeformat | help',
+				license_key: 'gpl'
+			});
+			document.querySelectorAll('textarea').forEach(elemt=>{
+				elemt.required = false;
+			});
+		</script>
 	</body>
 </html>

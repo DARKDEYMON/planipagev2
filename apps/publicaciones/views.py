@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from apps.users.generic import *
 from django.urls import reverse_lazy
 from django.apps import apps
+from django.db.models import Prefetch, Q
 from .forms import *
 
 # Create your views here.
@@ -56,5 +57,14 @@ def archivo_form_inline_view(request, pk):
     return render(request, 'archivo/archivo_inline.html', {'formset':formset, 'instance':instance, 'extra_field': extra_field, 'helper':helper})
 
 def main(request):
-    carousel = Publicacion.objects.filter().prefetch_related('archivos_set').order_by('-id')[:5]
-    return render(request, 'main.html', {'carousel':carousel})
+    carousel = Publicacion.objects.filter(publicado=True).prefetch_related(
+        Prefetch('archivo_set', Archivo.objects.filter(
+                Q(archivo__iendswith='.jpg')|
+                Q(archivo__iendswith='.png')|
+                Q(archivo__iendswith='.webp')|
+                Q(archivo__iendswith='.svg')
+            ).order_by('id')
+        )
+    ).order_by('-id')[:5]
+    in_main = apps.get_model('tipos', 'Tipo').objects.filter(in_main=True).prefetch_related('publicacion_set').select_related('tipomaestro')
+    return render(request, 'main.html', {'carousel':carousel, 'in_main':in_main})

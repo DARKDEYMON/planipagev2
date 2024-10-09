@@ -30,6 +30,19 @@
 					</ul>
 				</li>
 
+				{% for tm in request.tipo_maestro %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						    {{ tm.nombre }}
+						</a>
+						<ul class="dropdown-menu">
+							{% for t in tm.tipo_set.all %}
+								<li><a class="dropdown-item" href="#"><i class="fa-solid fa-list"></i> {{ t.nombre }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+				{% endfor %}
+
 				{% if user.is_authenticated %}
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

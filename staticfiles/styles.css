@@ -400,3 +400,22 @@ body {
     animation-iteration-count: 3;
     scroll-margin-top: 50vh;
 }
+
+.texto-rotado-izquierda{
+    writing-mode: vertical-rl;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: horizontal; 
+    text-overflow:  ellipsis;
+    overflow: hidden;
+    max-height: 300px;
+    transform: rotate(180deg);
+}
+
+.texto-rotado-derecha{
+    writing-mode: vertical-rl;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: horizontal; 
+    text-overflow:  ellipsis;
+    overflow: hidden;
+    max-height: 300px;
+}

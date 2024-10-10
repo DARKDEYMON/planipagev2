@@ -20,17 +20,18 @@
 
         {% comment %} Cajones izquierda {% endcomment %}
         <div class="contenedor-cajones mt-3">
-            <div class="contenedor-cajon-izquierda">
-                <div class="titulo-cajon">
-                    <h1>titulo</h1>
-                </div>
-                <div class="cajon-izquierda">       
-                    {% for i in in_main %}
-                   
-                        {% if i.publicacion_set.first.id|divisibleby:2 %} 
+
+            {% for i in in_main %}
+                <div class="{% cycle 'contenedor-cajon-izquierda' 'contenedor-cajon-derecha' %}">
+                    <div class="titulo-cajon ">
+                        <div class="{% cycle 'texto-rotado-izquierda' 'texto-rotado-derecha' %}">
+                             <h1>{{ i.nombre }}</h1>
+                        </div>
+                    </div>
+                    <div class="cajon-izquierda">       
                         <div class="articulos arti-estilo not-cart mini-art">
                             <h3>
-                                <time>{{ i.publicacion_set.first.modificado|date:"d \d\e F \d\e Y \a \l\a\s H:i"}}</time>
+                                <time>{{ i.publicacion_set.first.creado }}</time>
                                 <a class="text-noticias-titulo" href="/noticias/publicacion/{{ i.publicacion_set.first.id }}/">{{ i.publicacion_set.first.titulo }}</a>
                             </h3>
                             <div>
@@ -42,36 +43,9 @@
                                 <blockquote class="resaltado text-noticias">{{ i.publicacion_set.first.resumen }}</blockquote>
                             </h4>
                         </div>
-                        {% endif %}
-                    {% endfor %}
+                    </div>
                 </div>
-            </div>
-    
-            {% comment %} Cajones Derecha {% endcomment %} 
-            <div class="contenedor-cajon-derecha">
-                <div class="titulo-cajon">
-                    <h1>Titulo</h1>
-                </div>
-                <div class="cajon-derecha">
-                    {% for i in in_main %}
-                        {% if not i.publicacion_set.first.id|divisibleby:2 %}
-                        <div class="articulos arti-estilo not-cart mini-art">
-                            <h3>
-                                <time>{{ i.publicacion_set.first.modificado|date:"d \d\e F \d\e Y \a \l\a\s H:i"}}</time>
-                                <a class="text-noticias-titulo" href="/noticias/publicacion/{{ i.publicacion_set.first.id }}/">{{ i.publicacion_set.first.titulo }}</a>
-                            </h3>
-                            <div>
-                                {% for tipo in i.publicacion_set.first.tipo.all %}
-                                    <span class="badge bg-primary" style="font-size: 0.5rem;">{{ tipo.tipomaestro.nombre }} - {{ tipo.nombre }}</span>
-                                {% endfor %}
-                            </div>
-                            <h4>
-                                <blockquote class="resaltado text-noticias">{{ i.publicacion_set.first.resumen }}</blockquote>
-                            </h4>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
+        
+            {% endfor %}
         </div>
     {% endblock body %}

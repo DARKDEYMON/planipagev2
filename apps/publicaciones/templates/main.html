@@ -25,81 +25,52 @@
                     <h1>titulo</h1>
                 </div>
                 <div class="cajon-izquierda">       
-                    <div class="articulos arti-estilo not-cart mini-art">
-                        <h3>
-                            <time>18 de junio de 2024 a las 09:37</time>
-                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
-                        </h3>
-                        <div>
-                            
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
-                        
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
-                            
+                    {% for i in in_main %}
+                   
+                        {% if i.publicacion_set.first.id|divisibleby:2 %} 
+                        <div class="articulos arti-estilo not-cart mini-art">
+                            <h3>
+                                <time>{{ i.publicacion_set.first.modificado|date:"d \d\e F \d\e Y \a \l\a\s H:i"}}</time>
+                                <a class="text-noticias-titulo" href="/noticias/publicacion/{{ i.publicacion_set.first.id }}/">{{ i.publicacion_set.first.titulo }}</a>
+                            </h3>
+                            <div>
+                                {% for tipo in i.publicacion_set.first.tipo.all %}
+                                    <span class="badge bg-primary" style="font-size: 0.5rem;">{{ tipo.tipomaestro.nombre }} - {{ tipo.nombre }}</span>
+                                {% endfor %}
+                            </div>
+                            <h4>
+                                <blockquote class="resaltado text-noticias">{{ i.publicacion_set.first.resumen }}</blockquote>
+                            </h4>
                         </div>
-                        <h4>
-                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
-                        </h4>
-                    </div>
-
-                    <div class="articulos arti-estilo not-cart mini-art">
-                        <h3>
-                            <time>18 de junio de 2024 a las 09:37</time>
-                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
-                        </h3>
-                        <div>
-                            
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
-                        
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
-                            
-                        </div>
-                        <h4>
-                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
-                        </h4>
-                    </div>
-
-                    <div class="articulos arti-estilo not-cart mini-art">
-                        <h3>
-                            <time>18 de junio de 2024 a las 09:37</time>
-                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
-                        </h3>
-                        <div>
-                            
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
-                        
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
-                            
-                        </div>
-                        <h4>
-                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
-                        </h4>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
-
-            {% comment %} Cajones Derecha {% endcomment %}
+    
+            {% comment %} Cajones Derecha {% endcomment %} 
             <div class="contenedor-cajon-derecha">
                 <div class="titulo-cajon">
-                    <h1>titulo</h1>
+                    <h1>Titulo</h1>
                 </div>
                 <div class="cajon-derecha">
-                    <div class="articulos arti-estilo not-cart mini-art">
-                        <h3>
-                            <time>18 de junio de 2024 a las 09:37</time>
-                            <a class="text-noticias-titulo" href="/noticias/publicacion/67/">REGLAMENTO DE  CLAUSTROS</a>
-                        </h3>
-                        <div>
-                            
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Dirección de Planificación - Novedades</span>
-                        
-                            <span class="badge bg-primary" style="font-size: 0.5rem;">Normativa Ins. - Reglamentos Internos</span>
-                            
+                    {% for i in in_main %}
+                        {% if not i.publicacion_set.first.id|divisibleby:2 %}
+                        <div class="articulos arti-estilo not-cart mini-art">
+                            <h3>
+                                <time>{{ i.publicacion_set.first.modificado|date:"d \d\e F \d\e Y \a \l\a\s H:i"}}</time>
+                                <a class="text-noticias-titulo" href="/noticias/publicacion/{{ i.publicacion_set.first.id }}/">{{ i.publicacion_set.first.titulo }}</a>
+                            </h3>
+                            <div>
+                                {% for tipo in i.publicacion_set.first.tipo.all %}
+                                    <span class="badge bg-primary" style="font-size: 0.5rem;">{{ tipo.tipomaestro.nombre }} - {{ tipo.nombre }}</span>
+                                {% endfor %}
+                            </div>
+                            <h4>
+                                <blockquote class="resaltado text-noticias">{{ i.publicacion_set.first.resumen }}</blockquote>
+                            </h4>
                         </div>
-                        <h4>
-                            <blockquote class="resaltado text-noticias">Reglamento de Claustros Con las Modificaciones de Acuerdo a la Resolución Nº 031/2010  del H.C.U.</blockquote>
-                        </h4>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

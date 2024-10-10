@@ -66,5 +66,11 @@ def main(request):
             ).order_by('id')
         )
     ).order_by('-id')[:5]
-    in_main = apps.get_model('tipos', 'Tipo').objects.filter(in_main=True).prefetch_related('publicacion_set').select_related('tipomaestro')
+    in_main = (
+    apps.get_model('tipos', 'Tipo')
+    .objects.filter(in_main=True, publicacion__isnull=False)
+    .prefetch_related('publicacion_set')
+    .select_related('tipomaestro')
+    )
+
     return render(request, 'main.html', {'carousel':carousel, 'in_main':in_main})

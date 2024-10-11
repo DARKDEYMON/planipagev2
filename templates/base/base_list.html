@@ -23,38 +23,6 @@
 					<h3 class="text-center">No Existen Objetos Creados</h3>
 				{% endif %}
 			</div>
-			{% if is_paginated %}
-				<div class="d-flex justify-content-center">
-					<ul class="pagination">
-						{% if page_obj.has_previous %}
-							<li class="page-item">
-								<a class="page-link" href="{% querystring page=page_obj.previus_page_number %}">Anterior</a>
-							</li>
-						{% endif %}
-
-						<li class="page-item">
-					    	<div class="page-link">
-								<form role="form" method="get" style="display: inline-flex;">
-									{% if request.GET %}
-										{% for key, value in request.GET.items %}
-											{% if key != 'page' %}
-												<input type="hidden" name="{{key}}" value="{{value}}">
-											{% endif %}
-										{% endfor %}
-									{% endif %}
-									<input autocomplete="off" style="width: 30px; height: 20px;" type="text" name="page" value="{{ page_obj.number }}">
-								</form>
-								de {{ page_obj.paginator.num_pages }}.
-							</div>
-						</li>
-						
-						{% if page_obj.has_next %}
-							<li class="page-item">
-								<a class="page-link" href="{% querystring page=page_obj.next_page_number %}">Siguiente</a>
-							</li>
-						{% endif %}
-					</ul>
-				</div>
-			{% endif %}
+			{% include "base/base_paginador.html" %}
 		</h2>
 	{% endblock contend %}

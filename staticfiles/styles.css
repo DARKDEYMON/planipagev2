@@ -418,4 +418,108 @@ body {
     text-overflow:  ellipsis;
     overflow: hidden;
     max-height: 300px;
+    text-align: center;
+}
+
+/*cards*/
+.card-container {
+    perspective: 1000px;
+    margin-bottom: 30px;
+}
+
+.card2 {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card2 .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px #000;
+}
+
+.card2 .front img {
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
+
+.card2 .back img {
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
+
+.card2 .front h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgba(96, 96, 96, 0.696);
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.card2 .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card2 .contend-back{
+    max-height: 200px;
+    overflow: hidden;
+    position: absolute;
+    top: 50;
+    left: 0;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgba(96, 96, 96, 0.696);
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.card-container:hover .card2 {
+    transform: rotateY(180deg);
+}
+
+.card-container:hover .face {
+    animation: animationborder 3s infinite alternate linear;
+}
+@keyframes animationborder {
+    50%{
+         box-shadow: 10px 20px 30px black;
+    }
+}
+.card2 .front .tags{
+    max-height: 100px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgba(96, 96, 96, 0.696);
+    margin: 0;
+    padding: 10px;
 }

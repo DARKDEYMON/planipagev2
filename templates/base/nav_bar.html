@@ -37,7 +37,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							{% for t in tm.tipo_set.all %}
-								<li><a class="dropdown-item" href="#"><i class="fa-solid fa-list"></i> {{ t.nombre }}</a></li>
+								<li><a class="dropdown-item" href="{% url 'publicaciones:list_vistapublicaciones' t.pk %}"><i class="fa-solid fa-list"></i> {{ t.nombre }}</a></li>
 							{% endfor %}
 						</ul>
 					</li>

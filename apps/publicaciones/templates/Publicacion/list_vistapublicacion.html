@@ -1,0 +1,38 @@
+{% extends "base/base_main.html" %}
+{% load static %}
+	{% block body %}
+		<div class="container">
+			<div class="mt-3">
+				{% include "base/base_searchform.html" %}
+			</div>
+			<div class="row g-5">
+				{% for r in object_list %}
+					<div class="col-sm-12 col-xl-4">
+						<div class="card-container">
+							<a href="#">
+								<div class="card2">
+			                        <div class="face front">
+			                            <img src="{{ r.archivo_set.first.archivo.url }}" alt="Front Image">
+			                            <h3>{{ r.titulo }}</h3>
+			                            <div class="tags">
+			                            	{% for t in r.tipo.all %}
+			                            		 <span class="badge rounded-pill text-bg-primary">{{ t }}</span>
+			                            	{% endfor %}
+			                            </div>
+			                        </div>
+			                        <div class="face back">
+			                        	<img src="{% static 'baseimg1.jpg' %}" alt="Back Image">
+			                        	<div class="contend-back">
+				                            <h3>{{ r.titulo }}</h3>
+				                            <p>{{ r.resumen }}</p>
+			                            </div>
+			                        </div>
+			                    </div>
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			{% include "base/base_paginador.html" %}
+		</div>
+	{% endblock body %}

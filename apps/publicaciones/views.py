@@ -71,3 +71,20 @@ def main(request):
         publicacion__isnull=False
     )
     return render(request, 'main.html', {'carousel':carousel, 'in_main':in_main})
+
+#vista de render
+class ListVistaPublicaionesView(ListSearchView):
+    model = Publicacion
+    paginate_by = 9
+    template_name = 'publicacion/list_vistapublicacion.html'
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related(
+            'tipo', 
+            Prefetch('archivo_set', Archivo.objects.filter(
+                    Q(archivo__iendswith='.jpg')|
+                    Q(archivo__iendswith='.png')|
+                    Q(archivo__iendswith='.webp')|
+                    Q(archivo__iendswith='.svg')
+                )
+            )
+        ).filter(tipo__id=self.kwargs['pk'])

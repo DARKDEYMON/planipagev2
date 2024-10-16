@@ -52,3 +52,12 @@ class PermisosView(FormPageRedirectView):
 				else:
 					self.user.user_permissions.remove(permission)
 		return super().form_valid(form)
+
+class ConstanceView(FormView):
+	form_class = ConstanceForm
+	template_name = 'constance.html'
+	success_url = '/'
+	def form_valid(self, form):
+		if form.is_valid():
+			form.save()
+		return super().form_valid(form)

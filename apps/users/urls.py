@@ -31,5 +31,6 @@ urlpatterns = [
     ),
     path('listuser/', permission_required('users.users')(login_required(ListUserView.as_view())), name='list_user'),
     path('createuser/', permission_required('users.users')(login_required(CreateUserView.as_view())), name='create_user'),
-    path('permisos/<int:pk>/', permission_required('users.users')(login_required(PermisosView.as_view())), name='user_permisos')
+    path('permisos/<int:pk>/', permission_required('users.users')(login_required(PermisosView.as_view())), name='user_permisos'),
+    path('constantes/', permission_required('users.users')(login_required(ConstanceView.as_view())), name='constantes')
 ]

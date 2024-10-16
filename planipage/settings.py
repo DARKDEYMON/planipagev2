@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_cleanup.apps.CleanupConfig',
+    'constance',
+    'constance.backends.database',
     'apps.users',
     'apps.tipos',
     'apps.publicaciones',
@@ -73,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'constance.context_processors.config'
             ],
         },
     },
@@ -153,3 +156,23 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = reverse_lazy('users:login')
 LOGOUT_REDIRECT_URL = '/'
 LOGOUT_URL = reverse_lazy('users:logout')
+
+#constance
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_SUPERUSER_ONLY = False
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_cache_planipage/',
+    }
+}
+CONSTANCE_DATABASE_CACHE_BACKEND = 'default'
+
+CONSTANCE_CONFIG = {
+    'TELEFONOS': ('', 'Números de teléfono', str),
+    'CORREOS_ELECTRONICOS': ('', 'Correo Electrónico', str),
+    'FAX': ('', 'Numeros de Fax', str),
+    'DIRECCION': ('', 'Dirección', str),
+    'EXTRAS': ('','Extras',str)
+}

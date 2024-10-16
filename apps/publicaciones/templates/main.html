@@ -8,10 +8,12 @@
             {% for c in carousel %}
                  <div class="gallery-cell">
                     <a href="{% url 'publicaciones:detail_publicacion' c.pk %}">
-                        <img src="{{ c.archivo_set.all.0.archivo.url }}" alt="Image 1">
+                        <img src="{{ c.archivo_set.first.archivo.url }}" alt="Image 1">
                         <div class="overlay">
-                            <div class="overlay-content">{{ c.titulo }}</div>
-                            <div class="overlay-content">{{ c.resumen }}</div>
+                            <div class="overlay-content">
+                                <p>{{ c.titulo }}</p>
+                                <p>{{ c.resumen }}</p>
+                            </div>
                         </div>
                     </a>
                 </div>
@@ -28,22 +30,24 @@
                              <h1>{{ i.nombre }}</h1>
                         </div>
                     </div>
-                    <div class="cajon-izquierda">
-                        <div class="articulos arti-estilo not-cart mini-art">
-                            <h3>
-                                <time>{{ i.publicacion_set.first.creado }}</time>
-                                <a class="text-noticias-titulo" href="{% url 'publicaciones:detail_publicacion' i.pk %}">{{ i.publicacion_set.first.titulo }}</a>
-                            </h3>
-                            <div>
-                                {% for tipo in i.publicacion_set.first.tipo.all %}
-                                    <span class="badge bg-primary" style="font-size: 0.5rem;">{{ tipo.tipomaestro.nombre }} - {{ tipo.nombre }}</span>
-                                {% endfor %}
+                    {% for p in i.publicacion_set.all %}
+                        <div class="cajon-izquierda">
+                            <div class="articulos arti-estilo not-cart mini-art">
+                                <h3>
+                                    <time>{{ p.creado }}</time>
+                                    <a class="text-noticias-titulo" href="{% url 'publicaciones:detail_publicacion' i.pk %}">{{ p.titulo }}</a>
+                                </h3>
+                                <div>
+                                    {% for tipo in p.tipo.all %}
+                                        <span class="badge bg-primary" style="font-size: 0.5rem;">{{ tipo.tipomaestro.nombre }} - {{ tipo.nombre }}</span>
+                                    {% endfor %}
+                                </div>
+                                <h4>
+                                    <blockquote class="resaltado text-noticias">{{ p.resumen }}</blockquote>
+                                </h4>
                             </div>
-                            <h4>
-                                <blockquote class="resaltado text-noticias">{{ i.publicacion_set.first.resumen }}</blockquote>
-                            </h4>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
         
             {% endfor %}

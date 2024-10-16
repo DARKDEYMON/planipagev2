@@ -77,6 +77,7 @@ class ListVistaPublicaionesView(ListSearchView):
     model = Publicacion
     paginate_by = 9
     template_name = 'publicacion/list_vistapublicacion.html'
+    fields_search = ['titulo','resumen']
     def get_queryset(self):
         return super().get_queryset().filter(publicado=True).prefetch_related(
             'tipo', 
@@ -88,3 +89,25 @@ class ListVistaPublicaionesView(ListSearchView):
                 )
             )
         ).filter(tipo__id=self.kwargs['pk'])
+
+class ListSearchPublicaionView(ListSearchView):
+    model = Publicacion
+    paginate_by = 9
+    template_name = 'publicacion/list_search.html'
+    fields_search = ['titulo','resumen']
+    def get_queryset(self):
+        return super().get_queryset().filter(publicado=True).prefetch_related(
+            'tipo', 
+            Prefetch('archivo_set', Archivo.objects.filter(
+                    Q(archivo__iendswith='.jpg')|
+                    Q(archivo__iendswith='.png')|
+                    Q(archivo__iendswith='.webp')|
+                    Q(archivo__iendswith='.svg')
+                )
+            )
+        )
+
+class DetailPublicacionView(DetailView):
+    model = Publicacion
+    template_name = 'publicacion/detail_publicacion.html'
+    

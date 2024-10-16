@@ -27,5 +27,7 @@ urlpatterns = [
 
     path('archivoforminline/<int:pk>/', permission_required('users.publicaciones')(login_required(archivo_form_inline_view)), name='publicaciones_inline'),
 
-    path('listvistapublicaiones/<int:pk>/', ListVistaPublicaionesView.as_view(), name='list_vistapublicaciones')
+    path('listvistapublicaiones/<int:pk>/', ListVistaPublicaionesView.as_view(), name='list_vistapublicaciones'),
+    path('listsearch/', ListSearchPublicaionView.as_view(), name='list_search'),
+    path('detailpublicacion/<int:pk>/', DetailPublicacionView.as_view(), name='detail_publicacion')
 ]

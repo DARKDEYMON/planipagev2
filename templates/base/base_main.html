@@ -52,5 +52,13 @@
 				elemt.required = false;
 			});
 		</script>
+
+		<script>
+			have_search = new URLSearchParams(window.location.search);
+			if(have_search.get("search")){
+				document.getElementById("search-form").value = have_search.get("search");
+			}
+			console.log(have_search.get("search"));
+		</script>
 	</body>
 </html>

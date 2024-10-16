@@ -7,7 +7,7 @@
 
             {% for c in carousel %}
                  <div class="gallery-cell">
-                    <a href="#">
+                    <a href="{% url 'publicaciones:detail_publicacion' c.pk %}">
                         <img src="{{ c.archivo_set.all.0.archivo.url }}" alt="Image 1">
                         <div class="overlay">
                             <div class="overlay-content">{{ c.titulo }}</div>
@@ -28,11 +28,11 @@
                              <h1>{{ i.nombre }}</h1>
                         </div>
                     </div>
-                    <div class="cajon-izquierda">       
+                    <div class="cajon-izquierda">
                         <div class="articulos arti-estilo not-cart mini-art">
                             <h3>
                                 <time>{{ i.publicacion_set.first.creado }}</time>
-                                <a class="text-noticias-titulo" href="/noticias/publicacion/{{ i.publicacion_set.first.id }}/">{{ i.publicacion_set.first.titulo }}</a>
+                                <a class="text-noticias-titulo" href="{% url 'publicaciones:detail_publicacion' i.pk %}">{{ i.publicacion_set.first.titulo }}</a>
                             </h3>
                             <div>
                                 {% for tipo in i.publicacion_set.first.tipo.all %}

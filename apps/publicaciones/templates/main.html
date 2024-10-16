@@ -30,7 +30,7 @@
                              <h1>{{ i.nombre }}</h1>
                         </div>
                     </div>
-                    <div class="cajon-izquierda">
+                    <div class="{% cycle 'cajon-izquierda' 'cajon-derecho'">
                         {% for p in i.publicacion_set.all %}
                         <div class="articulos arti-estilo not-cart mini-art">
                             <h3>

@@ -1,40 +1,42 @@
 {% extends "base/center_body.html" %}
 	{% block contend %}
-		<div class="p-5 mb-4 bg-light rounded-3">
-			<div class="container-fluid py-5">
-				<h1 class=" fw-bold">Dirección de PLanificacion Universitaria - UATF</h1>
-				{% if config.EXTRAS != '' %}
-					<div>
-						{{ config.EXTRAS|safe }}
-					</div>
-				{% endif %}
+		<div class="cuerpo-noticias">
+			<div class="p-5 mb-4 bg-light rounded-3">
+				<div class="container-fluid py-5">
+					<h1 class=" fw-bold">Dirección de PLanificacion Universitaria - UATF</h1>
+					{% if config.EXTRAS != '' %}
+						<div>
+							{{ config.EXTRAS|safe }}
+						</div>
+					{% endif %}
+				</div>
 			</div>
-		</div>
-		{% if autoridades %}
-			<div class="container-fluid bg-light py-5">
-				<h3 class="text-center">Autoridades</h3>
-				{% for au in autoridades %}
-					<div class="row row-cols-2 text-center justify-content-center">
-						<div class=" col card">
-							<div class="card-body">
-								<h5 class="card-title text-center">{{ au.cargo}}</h5>
-								<h6 class="card-subtitle mb-2 text-muted">{{au.nombre}}</h6>
+			{% if autoridades %}
+				<div class="container-fluid bg-light py-5">
+					<h3 class="text-center">Autoridades</h3>
+					{% for au in autoridades %}
+						<div class="row row-cols-2 text-center justify-content-center">
+							<div class=" col card">
+								<div class="card-body">
+									<h5 class="card-title text-center">{{ au.cargo}}</h5>
+									<h6 class="card-subtitle mb-2 text-muted">{{au.nombre}}</h6>
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
-			</div>
-		{% endif %}
-		<br>
-		<div class="container-fluid bg-light py-5">
-			<h3 class="text-center">Contacto</h3>
-			<div class="row row-cols-12">
-				<div class=" col card">
-					<div class="card-body">
-						<div class="text-center"><strong class="card-title "><i class="fa-solid fa-phone"></i> Telefono(s):</strong> {{ config.TELEFONOS|safe }}</div>
-						<div class="text-center"><strong class="card-title "><i class="fa-solid fa-envelope"></i> Correo Electronico(s):</strong> {{ config.CORREOS_ELECTRONICOS|safe }}</div>
-						<div class="text-center"><strong class="card-title "><i class="fa-solid fa-fax"></i> FAX(s):</strong> {{ config.FAX|safe }}</div>
-						<div class="text-center"><strong class="card-title "><i class="fa-solid fa-house"></i> Direccion(es):</strong> {{ config.DIRECCION|safe }}</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+			<br>
+			<div class="container-fluid bg-light py-5">
+				<h3 class="text-center">Contacto</h3>
+				<div class="row row-cols-12">
+					<div class=" col card">
+						<div class="card-body">
+							<div class="text-center"><strong class="card-title "><i class="fa-solid fa-phone"></i> Telefono(s):</strong> {{ config.TELEFONOS|safe }}</div>
+							<div class="text-center"><strong class="card-title "><i class="fa-solid fa-envelope"></i> Correo Electronico(s):</strong> {{ config.CORREOS_ELECTRONICOS|safe }}</div>
+							<div class="text-center"><strong class="card-title "><i class="fa-solid fa-fax"></i> FAX(s):</strong> {{ config.FAX|safe }}</div>
+							<div class="text-center"><strong class="card-title "><i class="fa-solid fa-house"></i> Direccion(es):</strong> {{ config.DIRECCION|safe }}</div>
+						</div>
 					</div>
 				</div>
 			</div>

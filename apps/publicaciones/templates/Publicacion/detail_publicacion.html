@@ -1,7 +1,7 @@
 {% extends "base/center_body.html" %}
 	{% block contend %}
 		<div class="row">
-			<div class="col-sm-12 col-xl-10">
+			<div class="col-sm-12 col-xl-10 pb-3">
 				<div class="card cuerpo-noticias" style="background-color: rgba(245, 245, 245, 0.5)">
 					<div class="card-header">
 					    <h1 class="text-center"><strong>{{ object.titulo }}</strong></h1>
@@ -17,7 +17,7 @@
 					</div>
 					<div class="card-body">
 						<div class="row">
-							<div class="col-sm-12 col-xl-6">
+							<div class="col-sm-12 col-xl-6 pb-5">
 								<div class="gallery-noticias gallery js-flickity" data-flickity-options='{ "wrapAround": true, "autoPlay": true }'>
 									{% for i in object.fotos %}
 										<div class="gallery-noticias-interna">
@@ -27,11 +27,11 @@
 								</div>
 							</div>
 							<div class="col-sm-12 col-xl-6">
-								<h1 class="text-center resaltado"><strong>{{ object.resumen }}</strong></h1>
+								<h2 class="text-center resaltado"><strong>{{ object.resumen }}</strong></h2>
 							</div>
 						</div>
 
-						<div class="pt-5">
+						<div>
 							{{ object.contenido|safe }}
 						</div>
 					</div>

@@ -78,7 +78,7 @@ class ListVistaPublicaionesView(ListSearchView):
     paginate_by = 9
     template_name = 'publicacion/list_vistapublicacion.html'
     def get_queryset(self):
-        return super().get_queryset().prefetch_related(
+        return super().get_queryset().filter(publicado=True).prefetch_related(
             'tipo', 
             Prefetch('archivo_set', Archivo.objects.filter(
                     Q(archivo__iendswith='.jpg')|

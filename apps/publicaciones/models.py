@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.db.models import Prefetch, Q
 
 # Create your models here.
 
@@ -34,6 +35,20 @@ class Publicacion(models.Model):
 		null=False,
 		auto_now=True
 	)
+	def fotos(self):
+		return self.archivo_set.filter(
+			Q(archivo__iendswith='.jpg')|
+			Q(archivo__iendswith='.png')|
+			Q(archivo__iendswith='.webp')|
+			Q(archivo__iendswith='.svg')
+		)
+	def archibos(self):
+		return self.archivo_set.filter(
+			~Q(archivo__iendswith='.jpg')|
+			~Q(archivo__iendswith='.png')|
+			~Q(archivo__iendswith='.webp')|
+			~Q(archivo__iendswith='.svg')
+		)
 	def __str__(self):
 		return self.titulo
 	class Meta:

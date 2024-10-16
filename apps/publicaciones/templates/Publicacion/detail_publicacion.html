@@ -16,13 +16,30 @@
 					    </div>
 					</div>
 					<div class="card-body">
-						a
+						<div class="row">
+							<div class="col-sm-12 col-xl-6">
+								<div class="gallery-noticias gallery js-flickity" data-flickity-options='{ "wrapAround": true, "autoPlay": true }'>
+									{% for i in object.fotos %}
+										<div class="gallery-noticias-interna">
+											<img src="{{ i.archivo.url }}">
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="col-sm-12 col-xl-6">
+								<h1 class="text-center resaltado"><strong>{{ object.resumen }}</strong></h1>
+							</div>
+						</div>
+
+						<div class="pt-5">
+							{{ object.contenido|safe }}
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-12 col-xl-2">
 				<div class="card" style="background-color: rgba(245, 245, 245, 0.5)">
-					a
+					lore
 				</div>
 			</div>
 		</div>

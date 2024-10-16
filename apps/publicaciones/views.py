@@ -111,3 +111,5 @@ class DetailPublicacionView(DetailView):
     model = Publicacion
     template_name = 'publicacion/detail_publicacion.html'
     
+def nosotros_view(request):
+    return render(request,'nosotros.html',{})

@@ -55,8 +55,8 @@ class ConstanceForm(forms.Form):
 			elif(typo==float):
 				self.fields[key] = forms.FloatField(label=data[1], required=True, initial=getattr(self.Meta.constance,key))
 	
-			if(key in self.Meta.widget):
-				self.fields[key].widget = self.Meta.widget[key]
+			if(key in self.Meta.widgets):
+				self.fields[key].widget = self.Meta.widgets[key]
 	def getDataOrNone(self, data, index):
 		try:
 			return data[index]
@@ -68,6 +68,6 @@ class ConstanceForm(forms.Form):
 	class Meta:
 		constance = config
 		constance_values = settings.CONSTANCE_CONFIG
-		widget = {
+		widgets = {
 			'EXTRAS': forms.Textarea()
 		}

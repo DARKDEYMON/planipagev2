@@ -29,5 +29,6 @@ urlpatterns = [
 
     path('listvistapublicaiones/<int:pk>/', ListVistaPublicaionesView.as_view(), name='list_vistapublicaciones'),
     path('listsearch/', ListSearchPublicaionView.as_view(), name='list_search'),
-    path('detailpublicacion/<int:pk>/', DetailPublicacionView.as_view(), name='detail_publicacion')
+    path('detailpublicacion/<int:pk>/', DetailPublicacionView.as_view(), name='detail_publicacion'),
+    path('nosotros/', nosotros_view, name='nosotros')
 ]

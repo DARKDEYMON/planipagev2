@@ -1,4 +1,29 @@
 {% extends "base/center_body.html" %}
 	{% block contend %}
-		
+		<div class="row">
+			<div class="col-sm-12 col-xl-10">
+				<div class="card cuerpo-noticias" style="background-color: rgba(245, 245, 245, 0.5)">
+					<div class="card-header">
+					    <h1 class="text-center"><strong>{{ object.titulo }}</strong></h1>
+					    <h5 class="text-center"><strong>{{ object.creado|date:"l, d F \d\e Y" }}</strong></h5>
+					    <hr class="border border-dark border-2 opacity-50">
+					    <div class="marquee-noticias">
+						    <marquee scrolldelay='120' onmouseover="this.stop();" onmouseout="this.start();">
+						    	{% for t in object.tipo.all %}
+						    		<span class="badge rounded-pill text-bg-secondary">{{ t }}</span>
+						    	{% endfor %}
+						    </marquee>
+					    </div>
+					</div>
+					<div class="card-body">
+						a
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-xl-2">
+				<div class="card" style="background-color: rgba(245, 245, 245, 0.5)">
+					a
+				</div>
+			</div>
+		</div>
 	{% endblock contend %}

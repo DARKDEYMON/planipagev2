@@ -30,24 +30,24 @@
                              <h1>{{ i.nombre }}</h1>
                         </div>
                     </div>
-                    {% for p in i.publicacion_set.all %}
-                        <div class="cajon-izquierda">
-                            <div class="articulos arti-estilo not-cart mini-art">
-                                <h3>
-                                    <time>{{ p.creado }}</time>
-                                    <a class="text-noticias-titulo" href="{% url 'publicaciones:detail_publicacion' i.pk %}">{{ p.titulo }}</a>
-                                </h3>
-                                <div>
-                                    {% for tipo in p.tipo.all %}
-                                        <span class="badge bg-primary" style="font-size: 0.5rem;">{{ tipo.tipomaestro.nombre }} - {{ tipo.nombre }}</span>
-                                    {% endfor %}
-                                </div>
-                                <h4>
-                                    <blockquote class="resaltado text-noticias">{{ p.resumen }}</blockquote>
-                                </h4>
+                    <div class="cajon-izquierda">
+                        {% for p in i.publicacion_set.all %}
+                        <div class="articulos arti-estilo not-cart mini-art">
+                            <h3>
+                                <time>{{ p.creado }}</time>
+                                <a class="text-noticias-titulo" href="{% url 'publicaciones:detail_publicacion' i.pk %}">{{ p.titulo }}</a>
+                            </h3>
+                            <div>
+                                {% for tipo in p.tipo.all %}
+                                    <span class="badge bg-primary" style="font-size: 0.5rem;">{{ tipo.tipomaestro.nombre }} - {{ tipo.nombre }}</span>
+                                {% endfor %}
                             </div>
+                            <h4>
+                                <blockquote class="resaltado text-noticias">{{ p.resumen }}</blockquote>
+                            </h4>
                         </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
         
             {% endfor %}

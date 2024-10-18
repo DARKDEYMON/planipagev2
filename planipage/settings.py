@@ -59,7 +59,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'apps.extras.middleware.PaginasInteresMiddleware',
-    'apps.tipos.middleware.TiposMaestrosMiddleware'
+    'apps.tipos.middleware.TiposMaestrosMiddleware',
+    'apps.publicaciones.middleware.UltimasPublicaionesMiddleware'
 ]
 
 ROOT_URLCONF = 'planipage.urls'

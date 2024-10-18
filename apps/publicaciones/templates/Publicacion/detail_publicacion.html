@@ -2,7 +2,7 @@
 	{% block contend %}
 		<div class="row">
 			<div class="col-sm-12 col-xl-10 pb-3">
-				<div class="card cuerpo-noticias" style="background-color: rgba(245, 245, 245, 0.5)">
+				<div class="card cuerpo-noticias" style="background-color: rgba(251, 240, 216, 0.5)">
 					<div class="card-header">
 					    <h1 class="text-center"><strong>{{ object.titulo }}</strong></h1>
 					    <h5 class="text-center"><strong>{{ object.creado|date:"l, d F \d\e Y" }}</strong></h5>
@@ -32,14 +32,41 @@
 						</div>
 
 						<div>
+							<div class="alert alert-danger" role="alert">
+								<h5 class="text-center"><strong>Archivos</strong></h5>
+								<div class="border-column ps-3">
+									{% for a in object.archivos %}
+										<a target="_blank" class="text-archivo" href="{{ a.archivo.url }}">{{ a.archivo.name }}</a><br>
+									{% endfor %}
+								</div>
+							</div>
 							{{ object.contenido|safe }}
+
+							
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-12 col-xl-2">
 				<div class="card" style="background-color: rgba(245, 245, 245, 0.5)">
-					lore
+					<div class="row cuerpo-noticias">
+						<div class="col-12">
+							<h4 class="text-center"><strong>Ultimas Noticias</strong></h4>
+						</div>
+						{% for p in request.ultimas_publicaciones %}
+							<div class="col-12">
+								<a class="a-link" href="{% url 'publicaciones:detail_publicacion' p.pk %}">
+									<div class="border-column ps-3">
+										<h4 class="text-center"><strong>{{ p.titulo }}</strong></h4>
+										<hr>
+										<p>{{ p.resumen }}</p>
+									</div>
+								</a>
+							</div>
+							<hr>
+						{% endfor %}
+
+					</div>
 				</div>
 			</div>
 		</div>

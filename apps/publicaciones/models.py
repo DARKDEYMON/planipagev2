@@ -42,7 +42,7 @@ class Publicacion(models.Model):
 			Q(archivo__iendswith='.webp')|
 			Q(archivo__iendswith='.svg')
 		)
-	def archibos(self):
+	def archivos(self):
 		return self.archivo_set.filter(
 			~Q(archivo__iendswith='.jpg')|
 			~Q(archivo__iendswith='.png')|

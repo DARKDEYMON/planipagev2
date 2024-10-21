@@ -20,7 +20,7 @@ from .views import *
 urlpatterns = [
     path('', main, name='main'),
     
-    path('listPublicacion/', permission_required('users.publicaciones')(login_required(ListPublicacionViews.as_view())), name='publicacion_list'),
+    path('listpublicacion/', permission_required('users.publicaciones')(login_required(ListPublicacionViews.as_view())), name='publicacion_list'),
     path('createPublicacion/', permission_required('users.publicaciones')(login_required(CreatePublicacionView.as_view())), name='publicacion_create'),
     path('updatePublicacion/<int:pk>/', permission_required('users.publicaciones')(login_required(UpdatePublicacionView.as_view())), name='publicacion_update'),
     path('deletePublicacion/<int:pk>/', permission_required('users.publicaciones')(login_required(DeletePublicacionView.as_view())), name='publicacion_delete'),

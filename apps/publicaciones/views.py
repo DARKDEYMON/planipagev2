@@ -112,4 +112,5 @@ class DetailPublicacionView(DetailView):
     template_name = 'publicacion/detail_publicacion.html'
     
 def nosotros_view(request):
-    return render(request,'nosotros.html',{})
+    miembros = apps.get_model('extras', 'Miembro').objects.filter().order_by('prioridad', 'id')
+    return render(request,'nosotros.html',{'miembros':miembros})

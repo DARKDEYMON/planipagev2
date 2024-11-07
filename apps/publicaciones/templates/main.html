@@ -35,7 +35,7 @@
                         <div class="articulos arti-estilo not-cart mini-art">
                             <h3>
                                 <time>{{ p.creado }}</time>
-                                <a class="text-noticias-titulo" href="{% url 'publicaciones:detail_publicacion' i.pk %}">{{ p.titulo }}</a>
+                                <a class="text-noticias-titulo" href="{% url 'publicaciones:detail_publicacion' p.pk %}">{{ p.titulo }}</a>
                             </h3>
                             <div>
                                 {% for tipo in p.tipo.all %}

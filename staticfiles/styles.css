@@ -574,3 +574,7 @@ body {
     color: inherit;
     text-decoration: none;
 }
+
+.small-text{
+    font-size: xx-large;
+}

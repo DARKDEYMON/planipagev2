@@ -69,7 +69,7 @@ def main(request):
     in_main = apps.get_model('tipos', 'Tipo').objects.prefetch_related('publicacion_set').select_related('tipomaestro').filter(
         in_main=True,
         publicacion__isnull=False
-    )
+    ).distinct()
     return render(request, 'main.html', {'carousel':carousel, 'in_main':in_main})
 
 #vista de render

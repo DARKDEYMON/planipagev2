@@ -94,7 +94,7 @@ class ListSearchPublicaionView(ListSearchView):
     model = Publicacion
     paginate_by = 9
     template_name = 'publicacion/list_search.html'
-    fields_search = ['titulo','resumen']
+    fields_search = ['titulo']
     def get_queryset(self):
         return super().get_queryset().filter(publicado=True).prefetch_related(
             'tipo', 

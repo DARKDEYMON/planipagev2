@@ -11,6 +11,16 @@
 		<script src="https://kit.fontawesome.com/9328387887.js" crossorigin="anonymous"></script>
 		<script src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}" referrerpolicy="origin"></script>
 		<link href="https://fonts.cdnfonts.com/css/times-new-roman" rel="stylesheet">
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJXM405CD"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-3NJXM405CD');
+		</script>
 	</head>
 	<body>
 		{% block wave %}
@@ -60,16 +70,6 @@
 				document.getElementById("search-form").value = have_search.get("search");
 			}
 			console.log(have_search.get("search"));
-		</script>
-
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJXM405CD"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'G-3NJXM405CD');
 		</script>
 	</body>
 </html>

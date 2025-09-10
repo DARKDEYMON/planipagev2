@@ -1,4 +1,5 @@
 {% extends "base/center_body.html" %}
+{% load gloval_tags %}
 	{% block contend %}
 		<div class="row">
 			<div class="col-sm-12 col-xl-10 pb-3">
@@ -36,7 +37,7 @@
 								<h5 class="text-center"><strong>Archivos</strong></h5>
 								<div class="border-column ps-3">
 									{% for a in object.archivos %}
-										<a target="_blank" class="text-archivo" href="{{ a.archivo.url }}">{{ a.archivo.name }}</a><br>
+										<a target="_blank" class="text-archivo" href="{{ a.archivo.url }}">{{ a.archivo.name|basename }}</a><br>
 									{% endfor %}
 								</div>
 							</div>

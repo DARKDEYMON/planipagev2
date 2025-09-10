@@ -1,5 +1,6 @@
 from django import template
 from django.apps import apps
+import os
 
 register = template.Library()
 
@@ -18,3 +19,7 @@ def get_model_verbose_name(app, model):
 @register.simple_tag
 def get_model_verbose_name_plural(app, model):
 	return apps.get_model(app, model)._meta.verbose_name_plural.title()
+
+@register.filter
+def basename(value):
+	return os.path.basename(value)

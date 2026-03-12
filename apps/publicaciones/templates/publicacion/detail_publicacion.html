@@ -1,5 +1,11 @@
 {% extends "base/center_body.html" %}
 {% load gloval_tags %}
+	{% block tittle %}
+		{{ object.titulo }}
+	{% endblock tittle %}
+	{% block metadata %}
+		<meta name="description" content="{{object.resumen}}">
+	{% endblock metadata %}
 	{% block contend %}
 		<div class="row">
 			<div class="col-sm-12 col-xl-10 pb-3">

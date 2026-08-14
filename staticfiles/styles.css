@@ -578,3 +578,11 @@ body {
 .small-text{
     font-size: xx-large;
 }
+
+.imgajustada {
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-blend-mode: lighten;
+    object-fit: cover;   
+}

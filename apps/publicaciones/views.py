@@ -110,6 +110,11 @@ class ListSearchPublicaionView(ListSearchView):
 class DetailPublicacionView(DetailView):
     model = Publicacion
     template_name = 'publicacion/detail_publicacion.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if not self.object.publicado:
+            raise Http404('no esta publicado')
+        return context
     
 def nosotros_view(request):
     miembros = apps.get_model('extras', 'Miembro').objects.filter().order_by('prioridad', 'id')

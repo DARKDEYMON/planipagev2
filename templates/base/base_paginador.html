@@ -2,8 +2,8 @@
 	<div class="d-flex justify-content-center">
 		<ul class="pagination">
 			{% if page_obj.has_previous %}
-				<li class="page-item">
-					<a class="page-link" href="{% querystring page=page_obj.previus_page_number %}">Anterior</a>
+			    <li class="page-item">
+					<a class="page-link" href="{% querystring page=page_obj.previous_page_number %}">Anterior</a>
 				</li>
 			{% endif %}
 
@@ -24,9 +24,9 @@
 			</li>
 			
 			{% if page_obj.has_next %}
-				<li class="page-item">
+			    <li class="page-item">
 					<a class="page-link" href="{% querystring page=page_obj.next_page_number %}">Siguiente</a>
-				</li>
+			    </li>
 			{% endif %}
 		</ul>
 	</div>

@@ -1,0 +1,46 @@
+{% extends "base/base_list.html" %}
+{% load gloval_tags %}
+
+{% block headextra %}
+    <a type="button" class="btn btn-primary" href="{% url 'controlm:control_create_publicacion' %}">
+        <i class="fa-solid fa-plus"></i> Crear {% get_model_verbose_name 'publicaciones' 'publicacion' %}
+    </a>
+{% endblock headextra %}
+
+{% block bodylist %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Título</th>
+                <th scope="col">Resumen</th>
+                <th scope="col">Tipos</th>
+                <th scope="col">Estado?</th>
+                <th scope="col">Version</th>
+                <th scope="col">Creado</th>
+                <th scope="col">Modificado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr id='{{ object.id }}' class="target-blink">
+                    <td>{{ object.id }}</td>
+                    <td>{{ object.titulo }}</td>
+                    <td>{{ object.resumen }}</td>
+                    <td>{% for tipo in object.tipo.all %}{{ tipo.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    <td>{{ object.get_estado_display }}</td>
+                    <td>{{ object.version }}</td>
+                    <td>{{ object.creado|date:"d M Y H:i" }}</td>
+                    <td>{{ object.modificado|date:"d M Y H:i" }}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="btn btn-primary" href="{% url 'controlm:control_updateublicacion' object.id %}">
+                                <i class="fa-solid fa-pen-to-square"></i> Actualizar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock bodylist %}

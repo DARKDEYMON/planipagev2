@@ -40,7 +40,7 @@ class DeletePublicacionView(DeleteView):
     success_url = reverse_lazy('publicaciones:publicacion_list') 
     location = 'tipo_id'
 
-def archivo_form_inline_view(request, pk):
+def archivo_form_inline_view(request, pk, success_url=reverse_lazy('publicaciones:publicacion_list')):
     instance =  get_object_or_404(Publicacion, id=pk)
     form_inline = archivo_form_inline
     extra_field = form_inline().empty_form
@@ -50,14 +50,14 @@ def archivo_form_inline_view(request, pk):
         if formset.is_valid():
             formset.save()
             if('guardar-volver' in request.POST):
-                return HttpResponseRedirect(reverse_lazy('publicaciones:publicacion_list')+'?idpage=' + str(pk))
+                return HttpResponseRedirect((success_url)+'?idpage=' + str(pk))
             return HttpResponseRedirect(request.path)
     else:
         formset = form_inline(instance=instance)
     return render(request, 'archivo/archivo_inline.html', {'formset':formset, 'instance':instance, 'extra_field': extra_field, 'helper':helper})
 
 def main(request):
-    carousel = Publicacion.objects.filter(publicado=True).prefetch_related(
+    carousel = Publicacion.objects.filter(estado='p').prefetch_related(
         Prefetch('archivo_set', Archivo.objects.filter(
                 Q(archivo__iendswith='.jpg')|
                 Q(archivo__iendswith='.png')|
@@ -79,7 +79,7 @@ class ListVistaPublicaionesView(ListSearchView):
     template_name = 'publicacion/list_vistapublicacion.html'
     fields_search = ['titulo','resumen']
     def get_queryset(self):
-        return super().get_queryset().filter(publicado=True).prefetch_related(
+        return super().get_queryset().filter(estado='p').prefetch_related(
             'tipo', 
             Prefetch('archivo_set', Archivo.objects.filter(
                     Q(archivo__iendswith='.jpg')|
@@ -96,7 +96,7 @@ class ListSearchPublicaionView(ListSearchView):
     template_name = 'publicacion/list_search.html'
     fields_search = ['titulo']
     def get_queryset(self):
-        return super().get_queryset().filter(publicado=True).prefetch_related(
+        return super().get_queryset().filter(estado='p').prefetch_related(
             'tipo', 
             Prefetch('archivo_set', Archivo.objects.filter(
                     Q(archivo__iendswith='.jpg')|
@@ -112,7 +112,7 @@ class DetailPublicacionView(DetailView):
     template_name = 'publicacion/detail_publicacion.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if not self.object.publicado:
+        if not self.object.estado=='p':
             raise Http404('no esta publicado')
         return context
     

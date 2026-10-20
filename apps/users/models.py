@@ -19,6 +19,7 @@ class User(AbstractUser):
 			),
 		]
 	)
+	tipomaestro = models.ManyToManyField('tipos.TipoMaestro')
 	class Meta:
 		verbose_name = _("user")
 		verbose_name_plural = _("users")

@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.tipos',
     'apps.publicaciones',
-    'apps.extras'
+    'apps.extras',
+    'apps.controlm'
 ]
 
 MIDDLEWARE = [

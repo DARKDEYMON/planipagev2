@@ -37,7 +37,7 @@ class Tipo(models.Model):
 		default=False
 	)
 	def __str__(self):
-		return self.nombre
+		return f'{self.tipomaestro.nombre} - {self.nombre}'
 	class Meta:
 		verbose_name = _('Tipo')
 		verbose_name_plural = _('Tipos')

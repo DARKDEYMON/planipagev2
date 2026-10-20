@@ -15,7 +15,8 @@
                 <th scope="col">Título</th>
                 <th scope="col">Resumen</th>
                 <th scope="col">Tipos</th>
-                <th scope="col">Publicado</th>
+                <th scope="col">estado?</th>
+                <th scope="col">Version</th>
                 <th scope="col">Creado</th>
                 <th scope="col">Modificado</th>
             </tr>
@@ -27,7 +28,8 @@
                     <td>{{ object.titulo }}</td>
                     <td>{{ object.resumen }}</td>
                     <td>{% for tipo in object.tipo.all %}{{ tipo.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
-                    <td>{% if object.publicado %}Sí{% else %}No{% endif %}</td>
+                    <td>{{ object.get_estado_display }}</td>
+                    <td>{{ object.version }}</td>
                     <td>{{ object.creado|date:"d M Y H:i" }}</td>
                     <td>{{ object.modificado|date:"d M Y H:i" }}</td>
                     <td>

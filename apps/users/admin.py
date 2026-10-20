@@ -7,7 +7,7 @@ from django.contrib.auth.admin import UserAdmin
 class CustomUserAdmin(UserAdmin):
 	model = User
 	fieldsets = UserAdmin.fieldsets + (
-		("Extra", {'fields': ('ci',)}),
+		("Extra", {'fields': ('ci','tipomaestro')}),
 	)
 
 admin.site.register(User, CustomUserAdmin)

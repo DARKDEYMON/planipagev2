@@ -6,7 +6,7 @@
     font-family: korto-bold;
     src: url(/static/Korto-Bold.otf);
     font-style: normal;
-    /*font-weight: 400;*/
+    font-weight: -1rem;
 }
 /*
 @font-face {
@@ -26,6 +26,7 @@ body {
     background-size: 400% 400%;
     background-attachment: fixed;
     font-family: korto-bold;
+    font-size: 15px !important;
 }
 
 .bg-personal{

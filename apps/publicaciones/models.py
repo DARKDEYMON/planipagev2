@@ -20,10 +20,26 @@ class Publicacion(models.Model):
 		blank=False,
 		null=False
 	)
-	publicado = models.BooleanField(
-		blank=False,
+	estado = models.CharField(
+		max_length=50,
 		null=False,
-		default=False
+		blank=False,
+		choices=(
+			('si', 'Solicitud/Instrucción'),
+			('pa', 'Proyección y análisis'),
+			('sr', 'Socialización y revisión'),
+			('o', 'Observación'),
+			('el', 'En limpio'),
+			('rm', 'Remisión a la MAE'),
+			('t', 'Tratamiento HCU'),
+			('p', 'Publicado'),
+			('db', 'Dado de baja')
+		)
+	)
+	version = models.PositiveIntegerField(
+		null=False,
+		blank=False,
+		default=1
 	)
 	creado = models.DateTimeField(
 		blank=False,

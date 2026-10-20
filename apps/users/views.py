@@ -19,6 +19,11 @@ class CreateUserView(CreateView, FormPageRedirectView):
 	template_name = 'users/create_user.html'
 	success_url = reverse_lazy('users:list_user')
 
+class UpdateUseView(UpdateView, FormPageRedirectView):
+	model = User
+	form_class = UpdateUserForm
+	template_name = 'users/update_user.html'
+	success_url = reverse_lazy('users:list_user')
 
 class PermisosView(FormPageRedirectView):
 	model = User

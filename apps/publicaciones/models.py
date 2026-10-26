@@ -32,6 +32,7 @@ class Publicacion(models.Model):
 			('el', 'En limpio'),
 			('rm', 'Remisión a la MAE'),
 			('t', 'Tratamiento HCU'),
+			('rmc','Remisión a la Autoridad del NIVEL CENTRAL (si corresponde)'),
 			('p', 'Publicado'),
 			('db', 'Dado de baja')
 		)

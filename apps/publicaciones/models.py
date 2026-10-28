@@ -37,6 +37,11 @@ class Publicacion(models.Model):
 			('db', 'Dado de baja')
 		)
 	)
+	p_anio = models.PositiveIntegerField(
+		verbose_name='Año de publicación y/o entrada en vigencia',
+		null=True,
+		blank=True,
+	)
 	version = models.PositiveIntegerField(
 		null=False,
 		blank=False,

@@ -6,9 +6,9 @@ class PublicacionForm(forms.ModelForm):
 		model = apps.get_model('publicaciones','Publicacion')
 		exclude = ['']
 	def __init__(self, *args, **kwargs):
-		user = kwargs.pop('user', None)
+		self.user = kwargs.pop('user', None)
 		super().__init__(*args, **kwargs)
-		self.fields['tipo'].queryset = apps.get_model('tipos','Tipo').objects.filter(tipomaestro__user=user)
+		self.fields['tipo'].queryset = apps.get_model('tipos','Tipo').objects.filter(tipomaestro__user=self.user)
 	# verificacion
 	"""
 	def clean_tipo(self):
@@ -20,8 +20,8 @@ class PublicacionForm(forms.ModelForm):
 		return Tipo.objects.filter(pk__in=ids)
 	"""
 	def _save_m2m(self):
-		if (not self.instance.pk or not self.user or self.user.is_superuser or self.user.is_staff):
-			return super()._save_m2m()
+		#if (not self.instance.pk or not self.user or self.user.is_superuser or self.user.is_staff):
+		#	return super()._save_m2m()
 
 		# Tipos que el usuario puede gestionar.
 		tipos_permitidos = self.fields['tipo'].queryset

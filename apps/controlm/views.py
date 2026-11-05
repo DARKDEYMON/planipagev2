@@ -55,7 +55,7 @@ class ControlUpdatePublicacionView(UpdatePublicacionView):
 		kwargs['user'] = self.request.user
 		return kwargs
 	def get_object(self, query=None):
-		return self.model.objects.get(id=self.kwargs['pk'], tipo__tipomaestro__user=self.request.user)
+		return self.model.objects.filter(id=self.kwargs['pk'], tipo__tipomaestro__user=self.request.user).distinct()[0]
 
 class ControlCreatePublicacionView(CreatePublicacionView):
 	success_url = 'controlm:control_archivos_inline'
@@ -66,6 +66,8 @@ class ControlCreatePublicacionView(CreatePublicacionView):
 		return kwargs
 
 def control_archivo_form_inline_view(request, *args, **kwargs):
-	res = apps.get_model('publicaciones','Publicacion').objects.get(id=kwargs['pk'], tipo__tipomaestro__user=request.user)
-	kwargs['success_url'] = reverse_lazy('controlm:controlpublicacion_list', kwargs={'pk':res.tipo.all()[0].pk})
+	res = apps.get_model('publicaciones','Publicacion').objects.filter(id=kwargs['pk'], tipo__tipomaestro__user=request.user).distinct()
+	if(len(res)!=0):
+		res = res[0]
+	kwargs['success_url'] = reverse_lazy('controlm:controlpublicacion_list', kwargs={'pk':res.tipo.filter(tipomaestro__user=request.user)[0].pk})
 	return archivo_form_inline_view(request, *args, **kwargs)
